@@ -1,0 +1,90 @@
+1. Solving problems using array functions on rest countries data.
+
+a. Get all the countries from Asia continent /region using Filter function
+
+var request= new XMLHttpRequest();
+request.open('GET','https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json',true);
+request.send();
+request.onload=function(){
+var data=JSON.parse(this.response);
+console.log(data.filter((res)=>res.region==="Asia").map((res)=>res.name));
+};
+
+output:
+
+(50) ['Afghanistan', 'Armenia', 'Azerbaijan', 'Bahrain', 'Bangladesh', 'Bhutan', 'Brunei Darussalam', 'Cambodia', 'China', 'Georgia', 'Hong Kong', 'India', 'Indonesia', 'Iran (Islamic Republic of)', 'Iraq', 'Israel', 'Japan', 'Jordan', 'Kazakhstan', 'Kuwait', 'Kyrgyzstan', "Lao People's Democratic Republic", 'Lebanon', 'Macao', 'Malaysia', 'Maldives', 'Mongolia', 'Myanmar', 'Nepal', "Korea (Democratic People's Republic of)", 'Oman', 'Pakistan', 'Palestine, State of', 'Philippines', 'Qatar', 'Saudi Arabia', 'Singapore', 'Korea (Republic of)', 'Sri Lanka', 'Syrian Arab Republic', 'Taiwan', 'Tajikistan', 'Thailand', 'Timor-Leste', 'Turkey', 'Turkmenistan', 'United Arab Emirates', 'Uzbekistan', 'Viet Nam', 'Yemen']
+
+
+b. Get all the countries with a population of less than 2 lakhs using Filter function
+
+var request= new XMLHttpRequest();
+request.open('GET','https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json',true);
+request.send();
+request.onload=function(){
+var data=JSON.parse(this.response);
+console.log(data.filter((res)=>res.population<200000).map((res)=>res.name));
+};
+
+output:
+
+(63) ['Åland Islands', 'American Samoa', 'Andorra', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 'Aruba', 'Bermuda', 'Bonaire, Sint Eustatius and Saba', 'Bouvet Island', 'British Indian Ocean Territory', 'United States Minor Outlying Islands', 'Virgin Islands (British)', 'Virgin Islands (U.S.)', 'Cayman Islands', 'Christmas Island', 'Cocos (Keeling) Islands', 'Cook Islands', 'Curaçao', 'Dominica', 'Falkland Islands (Malvinas)', 'Faroe Islands', 'French Southern Territories', 'Gibraltar', 'Greenland', 'Grenada', 'Guam', 'Guernsey', 'Heard Island and McDonald Islands', 'Holy See', 'Isle of Man', 'Jersey', 'Kiribati', 'Liechtenstein', 'Marshall Islands', 'Micronesia (Federated States of)', 'Monaco', 'Montserrat', 'Nauru', 'Niue', 'Norfolk Island', 'Northern Mariana Islands', 'Palau', 'Pitcairn', 'Saint Barthélemy', 'Saint Helena, Ascension and Tristan da Cunha', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Martin (French part)', 'Saint Pierre and Miquelon', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Seychelles', 'Sint Maarten (Dutch part)', 'South Georgia and the South Sandwich Islands', 'Svalbard and Jan Mayen', 'Tokelau', 'Tonga', 'Turks and Caicos Islands', 'Tuvalu', 'Wallis and Futuna']
+
+
+c. Print the following details name, capital, flag using forEach function
+
+var request= new XMLHttpRequest();
+request.open('GET','https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json',true);
+request.send();
+request.onload=function(){
+var data=JSON.parse(this.response);
+console.log(data);
+var flag=data.forEach(element=> {
+console.log("Name: "+element.name+" , Capital: "+element.capital+" , Flag: " +element.flag);
+});
+};
+
+output:
+
+Array of countries name,capital,flag
+
+
+d. Print the total population of countries using reduce function
+
+var request= new XMLHttpRequest();
+request.open('GET','https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json',true);
+request.send();
+request.onload=function(){
+var data=JSON.parse(this.response);
+console.log(data.reduce((sum,curr)=>sum+curr.population,0));
+};
+
+output: 7349137231
+
+
+e. Print the country which uses US Dollars as currency.
+
+var request= new XMLHttpRequest();
+request.open('GET','https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json',true);
+request.send();
+request.onload=function(){
+var data=JSON.parse(this.response);
+console.log(data.filter((each) =>each.currencies[0].name === "United States dollar").map((each)=>each.name));
+};
+
+
+output:
+
+Array(12)
+0: "Bonaire, Sint Eustatius and Saba"
+1: "British Indian Ocean Territory"
+2: "Virgin Islands (U.S.)"
+3: "Ecuador"
+4: "El Salvador"
+5: "Guam"
+6: "Marshall Islands"
+7: "Northern Mariana Islands"
+8: "Puerto Rico"
+9: "Timor-Leste"
+10: "Turks and Caicos Islands"
+11: "United States of America"
+length: 12
